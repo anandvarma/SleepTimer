@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SleepTimerApp: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+        // Hide the title bar, let background color fill the window.
+        .windowStyle(HiddenTitleBarWindowStyle())
     }
 }
