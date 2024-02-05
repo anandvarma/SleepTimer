@@ -18,6 +18,13 @@ struct AppModeToggle: View {
                 Image(systemName: "cloud")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
+                    .scaleEffect(1.75)
+                    .padding(10)
+                    .opacity(!toggleState ? 1 : 0.2)
+                    .fontWeight(.bold)
+                    .help("Keep the mac awake.")
+                
+                Spacer()
                 
                 // Toggle.
                 Toggle("", isOn: $toggleState)
@@ -26,14 +33,21 @@ struct AppModeToggle: View {
                     }
                 .foregroundColor(.blue)
                 .toggleStyle(SwitchToggleStyle(tint:.green))
+                .scaleEffect(1.5)
+                
+                Spacer()
                 
                 // Sleep timer icon.
                 Image(systemName: "moon")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
+                    .scaleEffect(1.75)
+                    .padding(20)
+                    .opacity(toggleState ? 1 : 0.2)
+                    .fontWeight(.bold)
+                    .help("Put the mac to sleep.")
             }
-            
-
         }
+        .frame(width: 200)
     }
 }
