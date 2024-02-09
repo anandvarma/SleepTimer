@@ -20,8 +20,8 @@ struct AppModeToggle: View {
                     .foregroundStyle(.tint)
                     .scaleEffect(1.75)
                     .padding(10)
-                    .opacity(!toggleState ? 1 : 0.2)
-                    .fontWeight(.bold)
+                    .opacity(!toggleState ? 1 : 0.5)
+                    .fontWeight(!toggleState ? .bold : .regular)
                     .help("Keep the mac awake.")
                 
                 Spacer()
@@ -43,8 +43,8 @@ struct AppModeToggle: View {
                     .foregroundStyle(.tint)
                     .scaleEffect(1.75)
                     .padding(20)
-                    .opacity(toggleState ? 1 : 0.2)
-                    .fontWeight(.bold)
+                    .opacity(toggleState ? 1 : 0.5)
+                    .fontWeight(toggleState ? .bold : .regular)
                     .help("Put the mac to sleep.")
             }
         }

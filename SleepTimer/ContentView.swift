@@ -10,10 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     @State var appMode = AppMode.sleepTimer;
-    @State private var toggleState = false
-    @State private var input: String = ""
-    @State private var selectedUnit = 0 // 0 represents "Minutes", 1 represents "Hours"
-
+    @State var timerRunning = false;
+    @State var timerSecs = 15 * 60;
+    @State var timerSecsTotal = 15 * 60
 
     var body: some View {
         ZStack{
@@ -25,50 +24,57 @@ struct ContentView: View {
                         [Color.blue, Color.black]),
                 startPoint: .top, endPoint: .bottom)
                 .animation(.easeOut(duration: 0.8))
-        
+    
             backgroundGradient.ignoresSafeArea()
-            
+                        
             // Content.
             VStack {
                 AppModeToggle(appMode: $appMode)
                 
                 Spacer()
                 
-                TextField("15", text: self.$input)
-                    .font(Font.system(size: 48.0))
-                    .frame(width: 58, height: 80, alignment: .center)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .padding([.horizontal], 10)
-                    .cornerRadius(12)
-                    .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray))
-
-                Picker("", selection: $selectedUnit) {
-                    Text("Minutes").tag(0)
-                    Text("Hours").tag(1)
+                if (timerRunning) {
+                    Countdown(timerSecs: $timerSecs, timerSecsTotal: $timerSecsTotal)
+                } else {
+                    TimePicker(appMode: $appMode, timerSecs: $timerSecs, timerSecsTotal: $timerSecsTotal)
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                .frame(width: 120)
                 
                 Spacer()
                 
-                //LinearProgressDemoView()
+                Divider()
+                    .environment(\.colorScheme, (appMode == .awakeTimer) ? .light : .dark)
+                
+                HStack{
+                    Button(timerRunning ? "Stop" : "Start") {
+                        if (!timerRunning) {
+                            
+                        }
+                        timerRunning.toggle()
+                    }
+                    .tint(timerRunning ? .red : .green)
+                    .controlSize(.large)
+                    .buttonStyle(.borderedProminent)
+                    
+                    if (timerRunning) {
+                        Button("Snooze") {
+                            timerSecs += 5 * 60
+                            timerSecsTotal += 5 * 60
+                        }
+                        .tint(.orange)
+                        .controlSize(.large)
+                        .buttonStyle(.borderedProminent)
+                    }
+                }
+                
+
+
             }
             .padding()
         }
     }
 }
 
-struct LinearProgressDemoView: View {
-    @State private var progress = 0.0
 
-    var body: some View {
-        VStack {
-            ProgressView(value: progress)
-            Button("Start!") { progress += 0.05 }
-        }
-    }
-}
 
 #Preview {
     ContentView()

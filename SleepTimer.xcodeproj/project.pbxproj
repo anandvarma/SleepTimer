@@ -16,6 +16,9 @@
 		17A264B22B6B66420026CA1E /* SleepTimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A264B12B6B66420026CA1E /* SleepTimerUITestsLaunchTests.swift */; };
 		17A264BF2B6C1F990026CA1E /* AppMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A264BE2B6C1F990026CA1E /* AppMode.swift */; };
 		17A264C12B6C240B0026CA1E /* AppModeToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A264C02B6C240B0026CA1E /* AppModeToggle.swift */; };
+		17A264C32B7215090026CA1E /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A264C22B7215090026CA1E /* TimePicker.swift */; };
+		17A264C52B7218A50026CA1E /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A264C42B7218A50026CA1E /* Countdown.swift */; };
+		17A264C72B75FEB00026CA1E /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A264C62B75FEB00026CA1E /* test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		17A264B12B6B66420026CA1E /* SleepTimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		17A264BE2B6C1F990026CA1E /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMode.swift; sourceTree = "<group>"; };
 		17A264C02B6C240B0026CA1E /* AppModeToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeToggle.swift; sourceTree = "<group>"; };
+		17A264C22B7215090026CA1E /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		17A264C42B7218A50026CA1E /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		17A264C62B75FEB00026CA1E /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,9 @@
 			children = (
 				17A264932B6B66410026CA1E /* SleepTimerApp.swift */,
 				17A264952B6B66410026CA1E /* ContentView.swift */,
+				17A264C22B7215090026CA1E /* TimePicker.swift */,
+				17A264C42B7218A50026CA1E /* Countdown.swift */,
+				17A264C62B75FEB00026CA1E /* test.swift */,
 				17A264C02B6C240B0026CA1E /* AppModeToggle.swift */,
 				17A264972B6B66420026CA1E /* Assets.xcassets */,
 				17A2649C2B6B66420026CA1E /* SleepTimer.entitlements */,
@@ -268,7 +277,10 @@
 				17A264962B6B66410026CA1E /* ContentView.swift in Sources */,
 				17A264942B6B66410026CA1E /* SleepTimerApp.swift in Sources */,
 				17A264C12B6C240B0026CA1E /* AppModeToggle.swift in Sources */,
+				17A264C52B7218A50026CA1E /* Countdown.swift in Sources */,
 				17A264BF2B6C1F990026CA1E /* AppMode.swift in Sources */,
+				17A264C32B7215090026CA1E /* TimePicker.swift in Sources */,
+				17A264C72B75FEB00026CA1E /* test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
