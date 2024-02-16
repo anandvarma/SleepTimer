@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
-    @State var appMode = AppMode.sleepTimer;
-    @State var timerRunning = false;
-    @State var timerSecs = 15 * 60;
-    @State var timerSecsTotal = 15 * 60
+    // Global state.
+    @State var appMode = AppMode.sleepTimer
+    
+    // Time picker state.
+    @State var pickerValue = 15 //15
+    @State var pickerUnit = 60 //60
+
+    // Coundown state.
+    @State var timerRunning = false
+    @State var timerSecs = 0
+    @State var timerSecsTotal = 0
 
     var body: some View {
         ZStack{
@@ -36,7 +42,7 @@ struct ContentView: View {
                 if (timerRunning) {
                     Countdown(timerSecs: $timerSecs, timerSecsTotal: $timerSecsTotal)
                 } else {
-                    TimePicker(appMode: $appMode, timerSecs: $timerSecs, timerSecsTotal: $timerSecsTotal)
+                    TimePicker(appMode: $appMode, pickerValue: $pickerValue, pickerUnit: $pickerUnit)
                 }
                 
                 Spacer()
@@ -46,8 +52,14 @@ struct ContentView: View {
                 
                 HStack{
                     Button(timerRunning ? "Stop" : "Start") {
-                        if (!timerRunning) {
-                            
+                        if (timerRunning) {
+                            // Stop.
+                            //timerSecs = 0
+                            //timerSecsTotal = 0
+                        } else {
+                            // Start.
+                            timerSecs = pickerValue * pickerUnit
+                            timerSecsTotal = timerSecs
                         }
                         timerRunning.toggle()
                     }
@@ -59,14 +71,13 @@ struct ContentView: View {
                         Button("Snooze") {
                             timerSecs += 5 * 60
                             timerSecsTotal += 5 * 60
+                            //endEpoch += 5 * 60
                         }
                         .tint(.orange)
                         .controlSize(.large)
                         .buttonStyle(.borderedProminent)
                     }
                 }
-                
-
 
             }
             .padding()

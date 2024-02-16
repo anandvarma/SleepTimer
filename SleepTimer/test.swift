@@ -1,36 +1,28 @@
 import SwiftUI
 
 struct ContentView2: View {
-    @State private var isTimerRunning = false
-    @State private var timer: Timer?
-
     var body: some View {
         VStack {
-            Text("Hello, World!")
-
-            Button(action: {
-                if isTimerRunning {
-                    // Stop the timer
-                    timer?.invalidate()
-                    timer = nil
-                } else {
-                    // Start the timer
-                    timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-                        print("Hello, World!")
-                    }
-                }
-
-                // Toggle the timer state
-                isTimerRunning.toggle()
-            }) {
-                Text(isTimerRunning ? "Stop Timer" : "Start Timer")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+            Button("Sleep") {
+                putMacToSleep()
             }
+            .padding()
         }
-        .padding()
+    }
+
+    private func putMacToSleep() {
+        let appleScript = """
+            do shell script "pmset sleepnow"
+        """
+
+        var error: NSDictionary?
+        if let scriptObject = NSAppleScript(source: appleScript) {
+            scriptObject.executeAndReturnError(&error)
+        }
+
+        if let error = error {
+            print("Error putting Mac to sleep: \(error)")
+        }
     }
 }
 

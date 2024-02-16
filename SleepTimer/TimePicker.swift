@@ -9,22 +9,17 @@ import SwiftUI
 
 struct TimePicker: View {
     @Binding var appMode: AppMode
-    @Binding var timerSecs: Int
-    @Binding var timerSecsTotal: Int
-
-    @State private var selectedUnit = 0 // 0 represents "Minutes", 1 represents "Hours"
-
+    @Binding var pickerValue: Int
+    @Binding var pickerUnit: Int
 
     var body: some View {
         VStack {
-            Stepper("\(timerSecs/60)",
+            Stepper("\(pickerValue)",
                     onIncrement: {
-                        timerSecs += 1 * (selectedUnit == 0 ? 60 : 3600);
-                        timerSecsTotal = timerSecs
+                        pickerValue += 1
                     },
                     onDecrement: {
-                        timerSecs -= 1 * (selectedUnit == 0 ? 60 : 3600);
-                        timerSecsTotal = timerSecs
+                        pickerValue -= 1
                     },
                 onEditingChanged: { changed in })
             .font(Font.system(size: 48))
@@ -34,9 +29,9 @@ struct TimePicker: View {
             .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray))
             .environment(\.colorScheme, (appMode == .awakeTimer) ? .light : .dark)
 
-            Picker("", selection: $selectedUnit) {
-                Text("Minutes").tag(0)
-                Text("Hours").tag(1)
+            Picker("", selection: $pickerUnit) {
+                Text("Minutes").tag(60)
+                Text("Hours").tag(3600)
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding()
